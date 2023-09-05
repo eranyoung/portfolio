@@ -4,11 +4,12 @@ import { useEffect } from "react";
 import { Gallery } from "react-grid-gallery";
 import { imageCardInfo } from "../About/CardInfo";
 import PhotoAlbum from "react-photo-album";
+import { Textfit } from "react-textfit";
 
 const Contact = ({ setCurrRef, ownRef, navClick }) => {
 	const { ref, inView, entry } = useInView({
 		/* Optional options */
-		threshold: 1,
+		threshold: 0.5,
 	});
 
 	useEffect(() => {
@@ -21,9 +22,17 @@ const Contact = ({ setCurrRef, ownRef, navClick }) => {
 
 	return (
 		<>
-			<Container ref={ref}>
-				<div>Contact</div>
-				<PhotoAlbum photos={slides} layout="masonry"></PhotoAlbum>
+			<Container ref={ref} style={{ width: "100%", height: "100%" }}>
+				<Textfit
+					style={{
+						height: "100%",
+						display: "flex",
+						alignItems: "center",
+						justifyContent: "center",
+					}}
+				>
+					<p style={{ fontWeight: "bold" }}>WIP</p>
+				</Textfit>
 			</Container>
 		</>
 	);

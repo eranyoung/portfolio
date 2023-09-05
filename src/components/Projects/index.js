@@ -1,11 +1,12 @@
 import { Container } from "react-bootstrap";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
+import { Textfit } from "react-textfit";
 
 const Projects = ({ setCurrRef, ownRef, navClick }) => {
 	const { ref, inView, entry } = useInView({
 		/* Optional options */
-		threshold: 1,
+		threshold: 0.5,
 	});
 
 	useEffect(() => {
@@ -16,8 +17,17 @@ const Projects = ({ setCurrRef, ownRef, navClick }) => {
 
 	return (
 		<>
-			<Container ref={ref}>
-				<div>Projects</div>
+			<Container ref={ref} style={{ width: "100%", height: "100%" }}>
+				<Textfit
+					style={{
+						height: "100%",
+						display: "flex",
+						alignItems: "center",
+						justifyContent: "center",
+					}}
+				>
+					<p style={{ fontWeight: "bold" }}>WIP</p>
+				</Textfit>
 			</Container>
 		</>
 	);
