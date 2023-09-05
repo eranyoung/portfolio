@@ -1,0 +1,7 @@
+.background {
+    background-image: url('../../assets/svg/background2.svg'), url( '../../assets/svg/background1.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: None;
+}

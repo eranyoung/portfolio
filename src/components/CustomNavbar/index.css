@@ -1,0 +1,14 @@
+.nav-link {
+    font: 100% system-ui;
+}
+
+.nav-link-selected {
+    font: 130% system-ui;
+    font-weight: 600;
+}
+
+.nav-style {
+    position: fixed;
+    top: 0px;
+    height: 10vh;
+}
