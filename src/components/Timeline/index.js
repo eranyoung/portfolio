@@ -9,16 +9,10 @@ const Timeline = ({ containerHeight }) => {
 	const [timelineWidth, setTimelineWidth] = useState(0);
 	const [timelineHeight, setTimelineHeight] = useState(0);
 
-	const divHeight = useMemo(() => {
-		return containerHeight - timelineHeight - 32;
-	}, [containerHeight, timelineHeight, ref.current]);
-
 	useEffect(() => {
 		setTimelineWidth(ref.current ? ref.current.offsetWidth : 0);
 		setTimelineHeight(ref.current ? ref.current.offsetHeight : 0);
 	}, [ref.current?.offsetHeight, ref.current?.offsetWidth, ref.current]);
-
-	console.log(ref.current?.offsetHeight);
 
 	const changeContent = (info) => {
 		console.log(info);
@@ -104,13 +98,14 @@ const Timeline = ({ containerHeight }) => {
 	];
 
 	return (
-		<>
+		<div style={{ width: "100%", height: "100%", display: "table" }}>
 			<div
 				ref={ref}
 				style={{
 					width: "100%",
+					height: "100px",
 					padding: "8px",
-					display: "flex",
+					display: "table-row",
 					alignItems: "center",
 					flexDirection: "column",
 				}}
@@ -139,12 +134,13 @@ const Timeline = ({ containerHeight }) => {
 				style={{
 					width: "100%",
 					borderRadius: "24px",
-					height: `${divHeight}px`,
+					height: "100%",
+					display: "flex",
 				}}
 			>
 				{}
 			</Card>
-		</>
+		</div>
 	);
 };
 
