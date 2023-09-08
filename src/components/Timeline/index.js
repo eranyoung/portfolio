@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState, useMemo } from "react";
 import { Chrono } from "react-chrono";
 import CustomCard from "../CustomCard";
 import { Card } from "react-bootstrap";
+import { events } from "./helpers";
 
 const Timeline = ({ containerHeight }) => {
 	const ref = useRef(null);
@@ -9,93 +10,46 @@ const Timeline = ({ containerHeight }) => {
 	const [timelineWidth, setTimelineWidth] = useState(0);
 	const [timelineHeight, setTimelineHeight] = useState(0);
 
+	const [currentEntry, setCurrentEntry] = useState(events[-1]);
+
 	useEffect(() => {
 		setTimelineWidth(ref.current ? ref.current.offsetWidth : 0);
 		setTimelineHeight(ref.current ? ref.current.offsetHeight : 0);
 	}, [ref.current?.offsetHeight, ref.current?.offsetWidth, ref.current]);
 
 	const changeContent = (info) => {
-		console.log(info);
+		setCurrentEntry(events[info.index]);
 	};
 
-	const events = [
-		{
-			title: "May 1940",
-			cardTitle: "Dunkirk",
-			url: "http://www.history.com",
-			cardSubtitle:
-				"Men of the British Expeditionary Force (BEF) wade out to..",
-			cardDetailedText:
-				"Men of the British Expeditionary Force (BEF) wade out to..",
-			media: {
-				type: "IMAGE",
-				source: {
-					url: "http://someurl/image.jpg",
-				},
-			},
-			index: 0,
-		},
-		{
-			title: "May 1940",
-			cardTitle: "Dunkirk",
-			url: "http://www.history.com",
-			cardSubtitle:
-				"Men of the British Expeditionary Force (BEF) wade out to..",
-			cardDetailedText:
-				"Men of the British Expeditionary Force (BEF) wade out to..",
-			media: {
-				type: "IMAGE",
-				source: {
-					url: "http://someurl/image.jpg",
-				},
-			},
-		},
-		{
-			title: "May 1940",
-			cardTitle: "Dunkirk",
-			url: "http://www.history.com",
-			cardSubtitle:
-				"Men of the British Expeditionary Force (BEF) wade out to..",
-			cardDetailedText:
-				"Men of the British Expeditionary Force (BEF) wade out to..",
-			media: {
-				type: "IMAGE",
-				source: {
-					url: "http://someurl/image.jpg",
-				},
-			},
-		},
-		{
-			title: "May 1940",
-			cardTitle: "Dunkirk",
-			url: "http://www.history.com",
-			cardSubtitle:
-				"Men of the British Expeditionary Force (BEF) wade out to..",
-			cardDetailedText:
-				"Men of the British Expeditionary Force (BEF) wade out to..",
-			media: {
-				type: "IMAGE",
-				source: {
-					url: "http://someurl/image.jpg",
-				},
-			},
-		},
-		{
-			title: "May 1940",
-			cardTitle: "Dunkirk",
-			url: "http://www.history.com",
-			cardSubtitle:
-				"Men of the British Expeditionary Force (BEF) wade out to..",
-			cardDetailedText:
-				"Men of the British Expeditionary Force (BEF) wade out to..",
-			media: {
-				type: "IMAGE",
-				source: {
-					url: "http://someurl/image.jpg",
-				},
-			},
-		},
-	];
+	const divContent = useMemo(() => {
+		console.log(currentEntry);
+		return (
+			<div style={{ display: "table", height: "100%" }}>
+				<div
+					style={{
+						float: currentEntry?.index % 2 == 0 ? "left" : "right",
+						width: "50%",
+						height: "100%",
+						padding: "12px",
+					}}
+				>
+					<div
+						style={{
+							width: "100%",
+							height: "100%",
+							backgroundImage: `url(${currentEntry?.media.source.url})`,
+							backgroundPostion: "center center",
+							backgroundSize: "cover",
+							borderRadius: "24px",
+						}}
+					></div>
+				</div>
+				<div style={{ float: "left", width: "50%", padding: "12px" }}>
+					{currentEntry?.index}
+				</div>
+			</div>
+		);
+	}, [currentEntry]);
 
 	return (
 		<div style={{ width: "100%", height: "100%", display: "table" }}>
@@ -138,7 +92,7 @@ const Timeline = ({ containerHeight }) => {
 					display: "flex",
 				}}
 			>
-				{}
+				{divContent}
 			</Card>
 		</div>
 	);
