@@ -3,6 +3,9 @@ import { Chrono } from "react-chrono";
 import CustomCard from "../CustomCard";
 import { Card } from "react-bootstrap";
 import { events } from "./helpers";
+import { Textfit } from "react-textfit";
+import ReactFitText from "react-fittext";
+import FitText from "@kennethormandy/react-fittext";
 
 const Timeline = ({ containerHeight }) => {
 	const ref = useRef(null);
@@ -21,34 +24,62 @@ const Timeline = ({ containerHeight }) => {
 		setCurrentEntry(events[info.index]);
 	};
 
-	const divContent = useMemo(() => {
-		console.log(currentEntry);
+	const allContent = events.map((currentEntry) => {
 		return (
 			<div style={{ display: "table", height: "100%" }}>
-				<div
-					style={{
-						float: currentEntry?.index % 2 == 0 ? "left" : "right",
-						width: "50%",
-						height: "100%",
-						padding: "12px",
-					}}
-				>
+				{currentEntry?.media?.source?.url && (
 					<div
 						style={{
-							width: "100%",
+							float: currentEntry?.index % 2 == 0 ? "left" : "right",
+							width: "35%",
 							height: "100%",
-							backgroundImage: `url(${currentEntry?.media.source.url})`,
-							backgroundPostion: "center center",
-							backgroundSize: "cover",
-							borderRadius: "24px",
+							padding: "12px",
 						}}
-					></div>
-				</div>
-				<div style={{ float: "left", width: "50%", padding: "12px" }}>
-					{currentEntry?.index}
+					>
+						<div
+							style={{
+								width: "100%",
+								height: "100%",
+								backgroundImage: `url(${currentEntry?.media.source.url})`,
+								backgroundSize: "cover",
+								borderRadius: "24px",
+							}}
+						></div>
+					</div>
+				)}
+				<div
+					style={{
+						float: currentEntry?.index % 2 == 0 ? "right" : "left",
+						width: currentEntry?.media?.source?.url ? "65%" : "100%",
+						padding: "12px",
+						height: "100%",
+					}}
+				>
+					<div style={{ height: "15%" }}>
+						<FitText vertical compressor={1}>
+							<h1>{currentEntry?.cardTitle}</h1>
+						</FitText>
+					</div>
+					<div style={{ height: "10%" }}>
+						<FitText vertical compressor={0.3}>
+							<h2>{currentEntry?.cardSubtitle}</h2>
+						</FitText>
+					</div>
+					<div style={{ height: "10%" }}>
+						<FitText vertical compressor={0.3}>
+							<h4>{currentEntry?.dates}</h4>
+						</FitText>
+					</div>
+					<div style={{ height: "35vh", display: "flex" }}>
+						<Textfit mode="multi">{currentEntry?.cardDetailedText}</Textfit>
+					</div>
 				</div>
 			</div>
 		);
+	});
+
+	const divContent = useMemo(() => {
+		return allContent[currentEntry?.index];
 	}, [currentEntry]);
 
 	return (
@@ -89,7 +120,6 @@ const Timeline = ({ containerHeight }) => {
 					width: "100%",
 					borderRadius: "24px",
 					height: "100%",
-					display: "flex",
 				}}
 			>
 				{divContent}

@@ -80,7 +80,7 @@ const CustomNavbar = ({ currRef, setCurrRef, refs, navClick, setNavClick }) => {
 								id="projects"
 								onClick={handleRefChange}
 							>
-								Projects
+								Projects/Experience
 							</div>
 						</Nav.Link>
 						<Nav.Link>

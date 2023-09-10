@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@kennethormandy/react-fittext": "^0.6.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -14,6 +15,7 @@
     "react-bootstrap": "^2.8.0",
     "react-chrono": "^2.2.4",
     "react-dom": "^18.2.0",
+    "react-fittext": "^1.0.0",
     "react-grid-gallery": "^1.0.0",
     "react-intersection-observer": "^9.5.2",
     "react-photo-album": "^2.3.0",
