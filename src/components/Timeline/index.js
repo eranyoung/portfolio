@@ -40,7 +40,7 @@ const Timeline = ({ containerHeight }) => {
 							style={{
 								width: "100%",
 								height: "100%",
-								backgroundImage: `url(${currentEntry?.media.source.url})`,
+								backgroundImage: `url("${currentEntry?.media.source.url}")`,
 								backgroundSize: "cover",
 								borderRadius: "24px",
 							}}

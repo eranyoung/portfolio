@@ -15,8 +15,8 @@ const photos = {
 	keyboard2: "11RaM5fD0AY67J__yKre7A5wyr6EhEAWC",
 	keyboard3: "15PoGl1Y5A8RCaH_B_20w_OrHdKHFCpZ4",
 	keyboard4: "1jBtTRwlvD1-1SJ6z707d_qWoyVf7Zspf",
-	nuclearVis: "1n1BZegxZj-mxEZhNyW5zBrdS4IHOTOzS",
-	bitcoinNoobs: "1p_-dcF3vo0icR8R7tfGI2swaaQm261Ca",
+	nuclearVis: "/NuclearVis.jpg",
+	bitcoinNoobs: "/bitcoinnoobs.jpg",
 };
 
 export const events = [
@@ -65,7 +65,7 @@ export const events = [
 		media: {
 			type: "IMAGE",
 			source: {
-				url: googleDriveUrl(photos["nuclearVis"]),
+				url: photos["nuclearVis"],
 			},
 		},
 		index: 1,
@@ -128,7 +128,7 @@ export const events = [
 		media: {
 			type: "IMAGE",
 			source: {
-				url: googleDriveUrl(photos["bitcoinNoobs"]),
+				url: photos["bitcoinNoobs"],
 			},
 		},
 		index: 3,
