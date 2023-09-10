@@ -25,7 +25,7 @@ export const textCardInfo = [
 		hasTitle: true,
 		title: "Things I Do",
 		text: "Since I'm such an interesting person I've found lots of ways to waste my money over the years. I stated earlier that I grew up playing video games and although that has tapered off in recent years due to school and work I still enjoy playing games and keeping up with the latest consumer pc hardware scene.",
-		footnote: "I have lots of hobbies okay..",
+		footnote: "I have lots of hobbies okay.",
 	},
 	{
 		hasTitle: false,
