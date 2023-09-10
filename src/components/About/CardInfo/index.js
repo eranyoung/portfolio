@@ -7,6 +7,12 @@ export const textCardInfo = [
 	},
 	{
 		hasTitle: true,
+		title: "Education",
+		text: "I graduated Summa Cum Laude with my Bachelors Degree in Computer Science from the University of San Francisco in 2022 with a 4.0/4.0 GPA as a Getty Scholar, and made the Dean's List 6/6 semesters I attended.",
+		footnote: "I'm gonna spew about my life story next so...",
+	},
+	{
+		hasTitle: true,
 		title: <p>Life Story &trade;</p>,
 		text: "I was born on Halloween night in the San Gabriel Valley of California to two Cantonese parents who did not know how to spell the name 'Aaron'. Growing up I loved music, playing the piano from the age of 3 and then the trumpet later(fun fact I almost became a music major in college). ",
 		footnote: "There's more, I know you're just craving the deets.",
