@@ -1,4 +1,4 @@
-import { Container } from "react-bootstrap";
+import { Container, Ratio } from "react-bootstrap";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useRef, useState } from "react";
 import { Textfit } from "react-textfit";
@@ -47,9 +47,11 @@ const Projects = ({ setCurrRef, ownRef, navClick }) => {
 						height: "80%",
 					}}
 				>
-					<CustomCard>
-						<Timeline containerHeight={contRefHeight}></Timeline>
-					</CustomCard>
+					<Ratio aspectRatio={"16x9"}>
+						<CustomCard>
+							<Timeline containerHeight={contRefHeight}></Timeline>
+						</CustomCard>
+					</Ratio>
 				</div>
 			</Container>
 		</>

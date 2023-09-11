@@ -26,7 +26,7 @@ const Timeline = ({ containerHeight }) => {
 
 	const allContent = events.map((currentEntry) => {
 		return (
-			<div style={{ display: "table", height: "100%" }}>
+			<div style={{ display: "block", height: "100%" }}>
 				{currentEntry?.media?.source?.url && (
 					<div
 						style={{
@@ -41,7 +41,7 @@ const Timeline = ({ containerHeight }) => {
 								width: "100%",
 								height: "100%",
 								backgroundImage: `url("${currentEntry?.media.source.url}")`,
-								backgroundSize: "cover",
+								backgroundSize: "100%",
 								borderRadius: "24px",
 							}}
 						></div>
@@ -53,25 +53,28 @@ const Timeline = ({ containerHeight }) => {
 						width: currentEntry?.media?.source?.url ? "65%" : "100%",
 						padding: "12px",
 						height: "100%",
+						display: "block",
 					}}
 				>
-					<div style={{ height: "15%" }}>
-						<FitText vertical compressor={1}>
+					<div style={{ height: "15%", display: "block" }}>
+						<Textfit mode="multi" style={{ height: "100%" }}>
 							<h1>{currentEntry?.cardTitle}</h1>
-						</FitText>
+						</Textfit>
 					</div>
-					<div style={{ height: "10%" }}>
-						<FitText vertical compressor={0.3}>
+					<div style={{ height: "10%", display: "block" }}>
+						<Textfit mode="multi" style={{ height: "100%" }}>
 							<h2>{currentEntry?.cardSubtitle}</h2>
-						</FitText>
+						</Textfit>
 					</div>
-					<div style={{ height: "10%" }}>
-						<FitText vertical compressor={0.3}>
+					<div style={{ height: "10%", display: "block" }}>
+						<Textfit mode="multi" style={{ height: "100%" }}>
 							<h4>{currentEntry?.dates}</h4>
-						</FitText>
+						</Textfit>
 					</div>
-					<div style={{ height: "35vh", display: "flex" }}>
-						<Textfit mode="multi">{currentEntry?.cardDetailedText}</Textfit>
+					<div style={{ height: "300px", maxHeight: "65%", display: "block" }}>
+						<Textfit mode="multi" style={{ height: "100%" }}>
+							<p>{currentEntry?.cardDetailedText}</p>
+						</Textfit>
 					</div>
 				</div>
 			</div>
@@ -83,14 +86,13 @@ const Timeline = ({ containerHeight }) => {
 	}, [currentEntry]);
 
 	return (
-		<div style={{ width: "100%", height: "100%", display: "table" }}>
+		<>
 			<div
 				ref={ref}
 				style={{
 					width: "100%",
-					height: "100px",
+					height: "200px",
 					padding: "8px",
-					display: "table-row",
 					alignItems: "center",
 					flexDirection: "column",
 				}}
@@ -119,12 +121,12 @@ const Timeline = ({ containerHeight }) => {
 				style={{
 					width: "100%",
 					borderRadius: "24px",
-					height: "100%",
+					height: "calc(100% - 216px)",
 				}}
 			>
 				{divContent}
 			</Card>
-		</div>
+		</>
 	);
 };
 
